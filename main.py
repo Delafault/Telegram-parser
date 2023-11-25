@@ -9,6 +9,7 @@ api_id = 0
 api_hash = 'your_api_hash'
 system_version = "Android 10.0"
 device_model = "Pixel 3 XL"
+session_name = "SESSION_FOR_TELEGRAM_PARSER"
 ##########################
 
 logo = """
@@ -152,7 +153,7 @@ if __name__ == '__main__':
         print(logo)
         chat_username = input("\n@username чата: ")
         print()
-        with TelegramClient('SESSION_FOR_TELEGRAM_PARSER', api_id, api_hash, device_model=device_model, system_version=system_version) as client:
+        with TelegramClient(session_name, api_id, api_hash, device_model=device_model, system_version=system_version) as client:
             client.loop.run_until_complete(save_chat_members(client, chat_username))
     elif select_action == 'message':
         cls_cmd()
@@ -160,21 +161,21 @@ if __name__ == '__main__':
         chat_username = input("\n@username чата: ")
         count = input("\nМаксимальное количество сообщений для парсинга: ")
         print()
-        with TelegramClient('SESSION_FOR_TELEGRAM_PARSER', api_id, api_hash, device_model=device_model, system_version=system_version) as client:
+        with TelegramClient(session_name, api_id, api_hash, device_model=device_model, system_version=system_version) as client:
             client.loop.run_until_complete(get_chat_message_senders_from_history(client, chat_username, int(count)))
     elif select_action == 'channel':
         cls_cmd()
         print(logo)
         channel_username = input("\n@username канала: ")
         print()
-        with TelegramClient('SESSION_FOR_TELEGRAM_PARSER', api_id, api_hash, device_model=device_model, system_version=system_version) as client:
+        with TelegramClient(session_name, api_id, api_hash, device_model=device_model, system_version=system_version) as client:
             client.loop.run_until_complete(save_channel_members(client, channel_username))
     elif select_action == 'postcomment':
         cls_cmd()
         print(logo)
         channel_name, message_id = get_url()
         print()
-        with TelegramClient('SESSION_FOR_TELEGRAM_PARSER', api_id, api_hash, device_model=device_model, system_version=system_version) as client:
+        with TelegramClient(session_name, api_id, api_hash, device_model=device_model, system_version=system_version) as client:
             client.loop.run_until_complete(get_comments(client, channel_name, int(message_id)))
     else:
         bd_print("bb.")
