@@ -10,7 +10,7 @@
   </a>
 </div>
 <div align="center">
-  The simplest versions of a script for Telegram to automatically comment on newly created posts in channels.
+  A simple script for parsing users.
 </div>
 <div align="center">
   <h3>
